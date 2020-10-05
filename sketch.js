@@ -202,15 +202,15 @@ function mouseDragged() {
 }
 function mouseReleased() {
   constraint.fly();
-  gameState = "end";
+ // gameState = "end";
 }
 function keyPressed() {
   if (keyCode === 32) {
     //Set the ball's position near the sling
     //And attach it to the sling
-    Matter.Body.setPosition(this.ball, { x: 200, y: 400 });
+    //Matter.Body.setPosition(this.ball, { x: 200, y: 400 });
     constraint.attach(this.ball);
-    gameState = "play";
+    //gameState = "play";
   }
 }
 async function getBack() {
