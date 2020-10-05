@@ -11,7 +11,7 @@ var box7, box8, box9, box10, box11, box12;
 var box13, box14, box15, box16, box17, box18;
 var box19, box20, box21, box22, box23, box24, box25, box26;
 var polygon_img;
-
+var polygon , slingshot ;
 var backgroundImg;
 var gameState = "play";
 
@@ -29,18 +29,18 @@ function setup() {
 
   engine = Engine.create();
   world = engine.world;
-
-  ground01 = new Ground(1500 / 2, 700, width, 50);
+   Engine.run(engine);
+  ground01 = new Ground
   ground1 = new Ground(775, 600, 400, 50);
   ground2 = new Ground(1175, 300, 400, 50);
 
-  var options = {
+  /*var options = {
     restitution: 1
   }
   ball = Bodies.circle(200, 400, 20, options);
   World.add(world, ball);
 
-  constraint = new Constraint(this.ball, { x: 200, y: 400 });
+  constraint = new Constraint(this.ball, { x: 200, y: 400 });*/
 
   //first layer
   box1 = new Box(700, 550, 40, 50);
@@ -84,7 +84,10 @@ function setup() {
   //fourth layer
   box26 = new Box(1175, 100, 40, 50);
 
-  Engine.run(engine);
+  polygon = Bodies.circle(50,200,20);
+  World.add(world,polygon);
+  
+  slingShot = new Slingshot(this.polygon,{x:100,y:200});
 
 }
 
@@ -180,7 +183,7 @@ function draw() {
   box26.score();
 
   imageMode(CENTER);
-  image(polygon_img, ball.position.x, ball.position.y, 40, 40);
+  image(polygon_img, polygon.position.x, polygon.position.y, 40, 40);
 
   drawSprites();
 
